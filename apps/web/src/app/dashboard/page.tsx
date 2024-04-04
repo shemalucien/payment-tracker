@@ -14,7 +14,9 @@ export default function Page(): JSX.Element {
     }, 2000); // Simulated loading time: 2 seconds
 
     // Clean up the timeout to avoid memory leaks
-    return () => clearTimeout(fakeAsyncOperation);
+    return () => {
+      void clearTimeout(fakeAsyncOperation);
+    };
   }, []); // Run only once when the component mounts
 
   return (

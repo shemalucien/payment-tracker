@@ -29,7 +29,7 @@ const FormLayout = () => {
               <div className="p-6.5">
                 <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
                   <div className="w-full xl:w-1/2">
-                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label htmlFor="firstname" className="mb-3 block text-sm font-medium text-black dark:text-white">
                       First name
                     </label>
                     <input
@@ -40,7 +40,7 @@ const FormLayout = () => {
                   </div>
 
                   <div className="w-full xl:w-1/2">
-                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label htmlFor="lastname" className="mb-3 block text-sm font-medium text-black dark:text-white">
                       Last name
                     </label>
                     <input
@@ -52,7 +52,7 @@ const FormLayout = () => {
                 </div>
 
                 <div className="mb-4.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="email" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Email <span className="text-meta-1">*</span>
                   </label>
                   <input
@@ -63,7 +63,7 @@ const FormLayout = () => {
                 </div>
 
                 <div className="mb-4.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="subject" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Subject
                   </label>
                   <input
@@ -76,7 +76,7 @@ const FormLayout = () => {
                 <SelectGroupOne />
 
                 <div className="mb-6">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="message" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Message
                   </label>
                   <textarea
@@ -105,7 +105,7 @@ const FormLayout = () => {
             <form action="#">
               <div className="p-6.5">
                 <div className="mb-4.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="email" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Email
                   </label>
                   <input
@@ -115,8 +115,8 @@ const FormLayout = () => {
                   />
                 </div>
 
-                <div>
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <div> 
+                  <label htmlFor="password" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Password
                   </label>
                   <input
@@ -182,7 +182,7 @@ const FormLayout = () => {
             <form action="#">
               <div className="p-6.5">
                 <div className="mb-4.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="name" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Name
                   </label>
                   <input
@@ -193,7 +193,7 @@ const FormLayout = () => {
                 </div>
 
                 <div className="mb-4.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="email" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Email
                   </label>
                   <input
@@ -204,7 +204,7 @@ const FormLayout = () => {
                 </div>
 
                 <div className="mb-4.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="password" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Password
                   </label>
                   <input
@@ -215,7 +215,7 @@ const FormLayout = () => {
                 </div>
 
                 <div className="mb-5.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label htmlFor="password" className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Re-type Password
                   </label>
                   <input

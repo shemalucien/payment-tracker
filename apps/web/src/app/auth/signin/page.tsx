@@ -175,7 +175,7 @@ const SignIn: React.FC = () => {
 
               <form>
                 <div className="mb-4">
-                  <label className="mb-2.5 block font-medium text-black dark:text-white">
+                  <label htmlFor="email" className="mb-2.5 block font-medium text-black dark:text-white">
                     Email
                   </label>
                   <div className="relative">
@@ -206,7 +206,7 @@ const SignIn: React.FC = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label className="mb-2.5 block font-medium text-black dark:text-white">
+                  <label htmlFor="password" className="mb-2.5 block font-medium text-black dark:text-white">
                     Re-type Password
                   </label>
                   <div className="relative">
