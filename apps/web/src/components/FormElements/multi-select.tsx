@@ -15,8 +15,8 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
   const [options, setOptions] = useState<Option[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [show, setShow] = useState(false);
-  const dropdownRef = useRef<any>(null);
-  const trigger = useRef<any>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const dropdown = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const loadOptions = () => {
@@ -79,12 +79,12 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
   };
 
   useEffect(() => {
-    const clickHandler = ({ target }: MouseEvent) => {
-      if (!dropdownRef.current) return;
+    const clickHandler = ({ target }: MouseEvent): void => {
+      if (!dropdown.current) return;
       if (
         !show ||
-        dropdownRef.current.contains(target) ||
-        trigger.current.contains(target)
+        dropdown.current.contains(target as Node) ||
+        trigger.current?.contains(target as Node)
       )
         return;
       setShow(false);
@@ -95,7 +95,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
 
   return (
     <div className="relative z-50">
-      <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+      <label htmlFor="multiselect-dropdown" className="mb-3 block text-sm font-medium text-black dark:text-white">
         Multiselect Dropdown
       </label>
       <div>
@@ -110,7 +110,8 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
           <input name="values" type="hidden" defaultValue={selectedValues()} />
           <div className="relative z-20 inline-block w-full">
             <div className="relative flex flex-col items-center">
-              <div ref={trigger} onClick={open} className="w-full">
+              {/* <div ref={trigger} onClick={open} className="w-full"> */}
+              <div onClick={open} className="w-full"> 
                 <div className="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
                   <div className="flex flex-auto flex-wrap gap-3">
                     {selected.map((index) => (
@@ -187,7 +188,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                   className={`max-h-select absolute left-0 top-full z-40 w-full overflow-y-auto rounded bg-white shadow dark:bg-form-input ${
                     isOpen() ? "" : "hidden"
                   }`}
-                  ref={dropdownRef}
+                  ref={dropdown}
                   onFocus={() => setShow(true)}
                   onBlur={() => setShow(false)}
                 >

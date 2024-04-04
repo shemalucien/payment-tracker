@@ -84,6 +84,12 @@ const Profile = () => {
                   htmlFor="profile"
                   className="absolute bottom-0 right-0 flex h-8.5 w-8.5 cursor-pointer items-center justify-center rounded-full bg-primary text-white hover:bg-opacity-90 sm:bottom-2 sm:right-2"
                 >
+                  <input
+                    type="file"
+                    name="profile"
+                    id="profile"
+                    className="sr-only"
+                  />
                   <svg
                     className="fill-current"
                     width="14"
@@ -105,12 +111,7 @@ const Profile = () => {
                       fill=""
                     />
                   </svg>
-                  <input
-                    type="file"
-                    name="profile"
-                    id="profile"
-                    className="sr-only"
-                  />
+                  <span className="text-sm font-medium">Edit Profile</span>
                 </label>
               </div>
             </div>

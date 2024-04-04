@@ -30,7 +30,7 @@ const FormElements = () => {
             </div>
             <div className="flex flex-col gap-5.5 p-6.5">
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="default-input" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Default Input
                 </label>
                 <input
@@ -41,7 +41,7 @@ const FormElements = () => {
               </div>
 
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="active-input" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Active Input
                 </label>
                 <input
@@ -52,7 +52,7 @@ const FormElements = () => {
               </div>
 
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="disabled-input" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Disabled label
                 </label>
                 <input
@@ -102,7 +102,7 @@ const FormElements = () => {
             </div>
             <div className="flex flex-col gap-5.5 p-6.5">
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="attach-file" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Attach file
                 </label>
                 <input
@@ -112,7 +112,7 @@ const FormElements = () => {
               </div>
 
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="attach-file" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Attach file
                 </label>
                 <input
@@ -134,7 +134,7 @@ const FormElements = () => {
             </div>
             <div className="flex flex-col gap-5.5 p-6.5">
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="default-textarea" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Default textarea
                 </label>
                 <textarea
@@ -145,7 +145,7 @@ const FormElements = () => {
               </div>
 
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="active-textarea" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Active textarea
                 </label>
                 <textarea
@@ -156,7 +156,7 @@ const FormElements = () => {
               </div>
 
               <div>
-                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                <label htmlFor="disabled-textarea" className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Disabled textarea
                 </label>
                 <textarea
