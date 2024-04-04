@@ -15,7 +15,7 @@ export default function Page(): JSX.Element {
 
     // Clean up the timeout to avoid memory leaks
     return () => {
-      void clearTimeout(fakeAsyncOperation);
+      clearTimeout(fakeAsyncOperation);
     };
   }, []); // Run only once when the component mounts
 
