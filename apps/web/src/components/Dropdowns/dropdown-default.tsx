@@ -20,9 +20,9 @@ const DropdownDefault = () => {
       }
     };
     document.addEventListener("click", clickHandler);
-    return (): void => document.removeEventListener("click", clickHandler);
+    return (): void => {document.removeEventListener("click", clickHandler);};
   }, [dropdown, dropdownOpen, trigger]);
-  
+
 
 
   // close if the esc key is pressed
@@ -32,10 +32,13 @@ const DropdownDefault = () => {
       setDropdownOpen(false);
     };
     document.addEventListener("keydown", keyHandler);
-    return (): void => document.removeEventListener("keydown", keyHandler);
+    return (): void => {
+      document.removeEventListener("keydown", keyHandler);
+    };
   }, [dropdownOpen]);
-  
-  
+
+
+
 
 
 
