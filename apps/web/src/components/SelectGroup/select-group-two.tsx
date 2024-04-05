@@ -11,7 +11,7 @@ const SelectGroupTwo: React.FC = () => {
 
   return (
     <div>
-      <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+      <label htmlFor="country" className="mb-3 block text-sm font-medium text-black dark:text-white">
         Select Country
       </label>
 
