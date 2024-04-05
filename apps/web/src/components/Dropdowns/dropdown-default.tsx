@@ -20,7 +20,7 @@ const DropdownDefault = () => {
       }
     };
     document.addEventListener("click", clickHandler);
-    return (): void => {document.removeEventListener("click", clickHandler);};
+    return (): void => { document.removeEventListener("click", clickHandler); };
   }, [dropdown, dropdownOpen, trigger]);
 
 
@@ -48,7 +48,9 @@ const DropdownDefault = () => {
       <button
         className="text-[#98A6AD] hover:text-body"
         ref={trigger}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+        onClick={() => {
+          setDropdownOpen(!dropdownOpen);
+        }}
       >
         <svg
           className="fill-current"
@@ -74,11 +76,15 @@ const DropdownDefault = () => {
       </button>
       <div
         ref={dropdown}
-        onFocus={() => setDropdownOpen(true)}
-        onBlur={() => setDropdownOpen(false)}
-        className={`absolute right-0 top-full z-40 w-40 space-y-1 rounded-sm border border-stroke bg-white p-1.5 shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? "block" : "hidden"
-          }`}
+        onFocus={() => {
+          setDropdownOpen(true);
+        }}
+        onBlur={() => {
+          setDropdownOpen(false);
+        }}
+        className={`absolute right-0 top-full z-40 w-40 space-y-1 rounded-sm border border-stroke bg-white p-1.5 shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? "block" : "hidden"}`}
       >
+
         <button className="flex w-full items-center gap-2 rounded-sm px-4 py-1.5 text-left text-sm hover:bg-gray dark:hover:bg-meta-4">
           <svg
             className="fill-current"
