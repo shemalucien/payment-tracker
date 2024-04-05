@@ -15,7 +15,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
   const [options, setOptions] = useState<Option[]>([]);
   const [selected, setSelected] = useState<number[]>([]);
   const [show, setShow] = useState(false);
-  const trigger = useRef<HTMLButtonElement>(null);
+  const trigger = useRef<HTMLDivElement>(null);
   const dropdown = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
   };
 
   const isOpen = () => {
-    return show === true;
+    return show
   };
 
   const select = (index: number, event: React.MouseEvent) => {
@@ -91,7 +91,9 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
       setShow(false);
     };
     document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    return (): void => {
+      document.removeEventListener("click", clickHandler);
+    };
   });
 
   return (
@@ -111,8 +113,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
           <input name="values" type="hidden" defaultValue={selectedValues()} />
           <div className="relative z-20 inline-block w-full">
             <div className="relative flex flex-col items-center">
-              {/* <div ref={trigger} onClick={open} className="w-full"> */}
-              <div onClick={open} className="w-full">
+              <div ref={trigger} onClick={open} className="w-full">
                 <div className="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
                   <div className="flex flex-auto flex-wrap gap-3">
                     {selected.map((index) => (
@@ -126,6 +127,13 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                         <div className="flex flex-auto flex-row-reverse">
                           <div
                             onClick={() => remove(index)}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                remove(index);
+                              }
+                            }}
+                            role="button"
+                            tabIndex={0}
                             className="cursor-pointer pl-2 hover:text-danger"
                           >
                             <svg
