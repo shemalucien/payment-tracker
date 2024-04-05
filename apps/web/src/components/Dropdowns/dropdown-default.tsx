@@ -23,6 +23,8 @@ const DropdownDefault = () => {
     return () => document.removeEventListener("click", clickHandler);
   });
 
+
+
   // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }: KeyboardEvent): void => {
@@ -32,7 +34,9 @@ const DropdownDefault = () => {
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
   });
-  
+
+
+
 
   return (
     <div className="relative flex">
