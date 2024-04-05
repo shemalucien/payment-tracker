@@ -38,7 +38,10 @@ const DropdownUser = () => {
     <div className="relative">
       <Link
         // ref={trigger}
-        onClick={() => setDropdownOpen(!dropdownOpen)}
+        onClick={() => {
+          
+          setDropdownOpen(!dropdownOpen);
+        }}
         className="flex items-center gap-4"
         href="#"
       >
@@ -88,7 +91,7 @@ const DropdownUser = () => {
         onBlur={() => {
           setDropdownOpen(false);
         }}
-        className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? "block" : "hidden"
+        className={`absolute right-0 mt-4 flex w-62.5 flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen ? "block" : "hidden"
           }`}
       >
         <ul className="flex flex-col gap-5 border-b border-stroke px-6 py-7.5 dark:border-strokedark">

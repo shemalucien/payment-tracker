@@ -113,7 +113,18 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
           <input name="values" type="hidden" defaultValue={selectedValues()} />
           <div className="relative z-20 inline-block w-full">
             <div className="relative flex flex-col items-center">
-              <div ref={trigger} onClick={open} className="w-full">
+              <div
+                ref={trigger}
+                onClick={open}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    open();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                className="w-full"
+              >
                 <div className="mb-2 flex rounded border border-stroke py-2 pl-3 pr-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input">
                   <div className="flex flex-auto flex-wrap gap-3">
                     {selected.map((index) => (
@@ -126,7 +137,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                         </div>
                         <div className="flex flex-auto flex-row-reverse">
                           <div
-                            onClick={() => remove(index)}
+                            onClick={() => {remove(index)}}
                             onKeyDown={(e) => {
                               if (e.key === 'Enter' || e.key === ' ') {
                                 remove(index);
@@ -197,8 +208,8 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                   className={`max-h-select absolute left-0 top-full z-40 w-full overflow-y-auto rounded bg-white shadow dark:bg-form-input ${isOpen() ? "" : "hidden"
                     }`}
                   ref={dropdown}
-                  onFocus={() => setShow(true)}
-                  onBlur={() => setShow(false)}
+                  onFocus={() => {setShow(true)}}
+                  onBlur={() =>{ setShow(false)}}
                 >
                   <div className="flex w-full flex-col">
                     {options.map((option, index) => (
