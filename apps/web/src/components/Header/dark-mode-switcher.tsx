@@ -2,7 +2,6 @@ import useColorMode from "@/hooks/use-color-mode";
 
 const DarkModeSwitcher = () => {
   const [colorMode, setColorMode] = useColorMode();
-
   return (
     <li>
       <label htmlFor="dark-mode-switcher"

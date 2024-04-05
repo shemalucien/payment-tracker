@@ -6,8 +6,8 @@ const DropdownMessage = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [notifying, setNotifying] = useState(true);
 
-  const trigger = useRef<any>(null);
-  const dropdown = useRef<any>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const dropdown = useRef<HTMLDivElement>(null);
 
   // close on click outside
   useEffect(() => {
@@ -15,8 +15,8 @@ const DropdownMessage = () => {
       if (!dropdown.current) return;
       if (
         !dropdownOpen ||
-        dropdown.current.contains(target) ||
-        trigger.current.contains(target)
+        dropdown.current.contains(target as Node) ||
+        trigger.current?.contains(target as Node)
       )
         return;
       setDropdownOpen(false);
@@ -38,7 +38,7 @@ const DropdownMessage = () => {
   return (
     <li className="relative">
       <Link
-        ref={trigger}
+        //ref={trigger}
         onClick={() => {
           setNotifying(false);
           setDropdownOpen(!dropdownOpen);
