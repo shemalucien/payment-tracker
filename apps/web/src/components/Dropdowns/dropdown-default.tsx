@@ -15,14 +15,14 @@ const DropdownDefault = () => {
         !dropdownOpen ||
         dropdown.current.contains(target as Node) ||
         trigger.current?.contains(target as Node)
-      )
-        return;
-      setDropdownOpen(false);
+      ) {
+        setDropdownOpen(false);
+      }
     };
     document.addEventListener("click", clickHandler);
     return () => document.removeEventListener("click", clickHandler);
-  });
-
+  }, [dropdown, dropdownOpen, trigger]);
+  
 
 
   // close if the esc key is pressed
@@ -33,7 +33,8 @@ const DropdownDefault = () => {
     };
     document.addEventListener("keydown", keyHandler);
     return () => document.removeEventListener("keydown", keyHandler);
-  });
+  }, [dropdownOpen]);
+  
 
 
 
