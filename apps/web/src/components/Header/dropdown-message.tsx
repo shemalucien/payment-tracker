@@ -32,7 +32,7 @@ const DropdownMessage = () => {
       setDropdownOpen(false);
     };
     document.addEventListener("keydown", keyHandler);
-    return () => document.removeEventListener("keydown", keyHandler);
+    return (): void => { document.removeEventListener("keydown", keyHandler); };
   });
 
   return (
