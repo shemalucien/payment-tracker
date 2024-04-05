@@ -216,7 +216,7 @@ const MultiSelect: React.FC<DropdownProps> = ({ id }) => {
                       <div key={index}>
                         <div
                           className="w-full cursor-pointer rounded-t border-b border-stroke hover:bg-primary/5 dark:border-form-strokedark"
-                          onClick={() => select(index)}
+                          onClick={() => {select(index)}}
                           onKeyDown={(event) => {
                             if (event.key === 'Enter' || event.key === ' ') {
                               select(index);
