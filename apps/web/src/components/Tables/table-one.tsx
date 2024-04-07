@@ -257,7 +257,7 @@ const TableOne = () => {
     e.preventDefault();
     // Add your logic here to handle the submission of the new entry
     // For example, you can update your brandData state with the new entry
-    console.log("New entry submitted:", newEntry);
+    // console.log("New entry submitted:", newEntry);
     setShowAddForm(false); // Close the form after submission
     // Reset the form fields
     setNewEntry({
@@ -277,7 +277,7 @@ const TableOne = () => {
           Top Channels
         </h4>
 
-        <button onClick={() => setShowAddForm(!showAddForm)} className="mb-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded z-10">
+        <button onClick={() => {setShowAddForm(!showAddForm)} }className="mb-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded z-10">
           {showAddForm ? "Close Form" : "Add New Entry"}
         </button>
 
@@ -285,7 +285,15 @@ const TableOne = () => {
 
       {/* Add New Entry form */}
       <div className={`transition-transform duration-300 ease-in-out transform ${showAddForm ? 'translate-x-0' : 'translate-x-full'} w-full absolute top-60 `}>
-        <div className="overlay fixed inset-0 bg-black bg-opacity-50" onClick={() => setShowAddForm(false)}></div>
+        <div className="overlay fixed inset-0 bg-black bg-opacity-50" 
+        onClick={() => {setShowAddForm(false)}}
+        onKeyPress={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                setShowAddForm(false);
+            }
+        }}
+        role="button"
+        tabIndex={0}></div>
         <div className="form-wrapper">
           <div className="bg-gray-100 p-4 rounded">
             <div className="form-wrapper">

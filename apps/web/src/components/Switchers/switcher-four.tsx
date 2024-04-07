@@ -9,6 +9,8 @@ const SwitcherFour = () => {
         htmlFor="toggle4"
         className="flex cursor-pointer select-none items-center"
       >
+        toggle4
+      </label>
         <div className="relative">
           <input
             type="checkbox"
@@ -25,7 +27,6 @@ const SwitcherFour = () => {
             }`}
           ></div>
         </div>
-      </label>
     </div>
   );
 };

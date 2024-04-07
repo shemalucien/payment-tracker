@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import SidebarLinkGroup from "./SidebarLinkGroup";
+import SidebarLinkGroup from "./sidebar-link-group";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -14,13 +14,16 @@ interface SidebarProps {
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
 
-  const trigger = useRef<any>(null);
-  const sidebar = useRef<any>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const sidebar = useRef<HTMLDivElement>(null);
 
   let storedSidebarExpanded = "true";
 
-  const [sidebarExpanded, setSidebarExpanded] = useState(
-    storedSidebarExpanded === null ? false : storedSidebarExpanded === "true",
+  // const [sidebarExpanded, setSidebarExpanded] = useState(
+  //   storedSidebarExpanded === null ? false : storedSidebarExpanded === "true",
+  // );
+  const [sidebarExpanded] = useState(
+    storedSidebarExpanded ? false : storedSidebarExpanded === "true",
   );
 
   // close on click outside
@@ -29,14 +32,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       if (!sidebar.current || !trigger.current) return;
       if (
         !sidebarOpen ||
-        sidebar.current.contains(target) ||
-        trigger.current.contains(target)
+        sidebar.current.contains(target as Node) ||
+        trigger.current.contains(target as Node)
       )
         return;
       setSidebarOpen(false);
     };
     document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    return (): void => { document.removeEventListener("click", clickHandler); };
   });
 
   // close if the esc key is pressed
@@ -46,7 +49,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       setSidebarOpen(false);
     };
     document.addEventListener("keydown", keyHandler);
-    return () => document.removeEventListener("keydown", keyHandler);
+    return (): void => { document.removeEventListener("keydown", keyHandler); };
   });
 
   useEffect(() => {
@@ -78,7 +81,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
         <button
           ref={trigger}
-          onClick={() => setSidebarOpen(!sidebarOpen)}
+          onClick={() =>{ setSidebarOpen(!sidebarOpen)}}
           aria-controls="sidebar"
           aria-expanded={sidebarOpen}
           className="block lg:hidden"
@@ -117,7 +120,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   pathname === "/" || pathname.includes("dashboard")
                 }
               >
-                {(handleClick, open) => {
+                {() => {
                   return (
                     <React.Fragment>
                       <Link

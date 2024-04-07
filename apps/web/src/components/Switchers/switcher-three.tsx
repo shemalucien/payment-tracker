@@ -9,6 +9,8 @@ const SwitcherThree = () => {
         htmlFor="toggle3"
         className="flex cursor-pointer select-none items-center"
       >
+        toggle3
+      </label>
         <div className="relative">
           <input
             type="checkbox"
@@ -58,7 +60,6 @@ const SwitcherThree = () => {
             </span>
           </div>
         </div>
-      </label>
     </div>
   );
 };
