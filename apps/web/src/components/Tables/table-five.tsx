@@ -34,14 +34,14 @@ const productData: Product[] = [
 
 const TableTFive = () => {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto dark:text-black">
       <div className="px-2 py-6 md:px-6 xl:px-7.5">
         <h4 className="text-xl font-semibold text-black dark:text-white">
           Top Clients
         </h4>
       </div>
 
-      <table className="min-w-full divide-y divide-gray-200">
+      <table className="min-w-full divide-y divide-gray-200 dark:bg-black dark:text-white">
         <thead className="bg-gray-50">
           <tr>
             <th
@@ -65,7 +65,7 @@ const TableTFive = () => {
             
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white divide-y divide-gray-200 dark:bg-black dark:text:white">
           {productData.map((product, index) => (
             <tr key={index}>
               <td className="px-6 py-4 whitespace-nowrap">

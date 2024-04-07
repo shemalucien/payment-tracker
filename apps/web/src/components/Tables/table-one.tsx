@@ -9,7 +9,7 @@ const TableOne: React.FC = () => {
   
 const [brandData, setBrandData] = useState<BRAND[]>([
   {
-    logo: "/images/brand/brand-01.svg",
+    logo: "/images/user/user-01.png",
     name: "Kalisa",
     Tinnumber: "1234578",
     contact: "0788888888",
@@ -17,7 +17,7 @@ const [brandData, setBrandData] = useState<BRAND[]>([
     address2: "Kimisagara",
   },
   {
-    logo: "/images/brand/brand-02.svg",
+    logo: "/images/user/user-02.png",
     name: "Kagabo",
     Tinnumber: "1234578",
     contact: "0788888888",
@@ -25,7 +25,7 @@ const [brandData, setBrandData] = useState<BRAND[]>([
     address2: "Kimisagara",
   },
   {
-    logo: "/images/brand/brand-03.svg",
+    logo: "/images/user/user-03.png",
     name: "Mukamana",
     Tinnumber: "1234578",
     contact: "0788888888",
@@ -33,7 +33,7 @@ const [brandData, setBrandData] = useState<BRAND[]>([
     address2: "Kimisagara",
   },
   {
-    logo: "/images/brand/brand-04.svg",
+    logo: "/images/user/user-04.png",
     name: "Janvier",
     Tinnumber: "1234578",
     contact: "0788888888",
@@ -41,7 +41,7 @@ const [brandData, setBrandData] = useState<BRAND[]>([
     address2: "Kimisagara",
   },
   {
-    logo: "/images/brand/brand-05.svg",
+    logo: "/images/user/user-05.png",
     name: "Vincent",
     Tinnumber: "1234578",
     contact: "0788888888",
@@ -113,22 +113,22 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         </h4>
 
         {/* Button to toggle the form */}
-        <button onClick={() => setShowAddForm(!showAddForm)} className="mb-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded z-10">
-          {showAddForm ? "Close Form" : "Add New Entry"}
+        <button onClick={() => setShowAddForm(!showAddForm)} className="mb-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded z-10 sm:py-2 text-base">
+          {showAddForm ? "Close" : "Add New"}
         </button>
       </div>
 
       {/* Form container */}
       <div className={`transition-transform duration-300 ease-in-out transform ${showAddForm ? 'translate-x-0 mb-12' : 'translate-x-full'} w-full absolute top-60 `}>
         {/* Your form JSX here */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="w-full sm:mb-12">
           <div className="mb-2">
-            <label htmlFor="name" className="block font-semibold mb-1">Name:</label>
+            <label htmlFor="name" className="block font-semibold mb-1">Name</label>
             <input type="text" id="name" name="name" placeholder='Enter Name' value={newEntry.name} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
           </div>
 
           <div className="mb-2">
-            <label htmlFor="logo" className="block font-semibold mb-1">Picture:</label>
+            <label htmlFor="logo" className="block font-semibold mb-1">Picture</label>
             {/* <div className="flex flex-col items-center justify-center border border-gray-400 px-2 py-1 rounded w-3/4 cursor-pointer">
               <div className="text-gray-700 text-lg font-bold text-center transition-colors duration-200 ease-in-out hover:text-gray-800 w-3/4">
                 Drop files here
@@ -149,20 +149,20 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           </div>
 
           <div className="mb-2">
-            <label htmlFor="Tinnumber" className="block font-semibold mb-1">Tinnumber:</label>
-            <input type="text" id="Tinnumber" name="Tinnumber" value={newEntry.Tinnumber} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
+            <label htmlFor="Tinnumber" className="block font-semibold mb-1">Tinnumber</label>
+            <input type="text" id="Tinnumber" name="Tinnumber" placeholder='Enter Tinnumber' value={newEntry.Tinnumber} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
           </div>
           <div className="mb-2">
-            <label htmlFor="contact" className="block font-semibold mb-1">contact:</label>
-            <input type="text" id="contact" name="contact" value={newEntry.contact} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
+            <label htmlFor="contact" className="block font-semibold mb-1">Contact</label>
+            <input type="text" id="contact" name="contact" placeholder='Enter contact' value={newEntry.contact} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
           </div>
           <div className="mb-2">
-            <label htmlFor="address1" className="block font-semibold mb-1">address1:</label>
-            <input type="text" id="address1" name="address1" value={newEntry.address1} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
+            <label htmlFor="address1" className="block font-semibold mb-1">Address1</label>
+            <input type="text" id="address1" name="address1" placeholder='Enter address1' value={newEntry.address1} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
           </div>
           <div className="mb-2">
-            <label htmlFor="address2" className="block font-semibold mb-1">address2:</label>
-            <input type="text" id="address2" name="address2" value={newEntry.address2} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
+            <label htmlFor="address2" className="block font-semibold mb-1">Address2</label>
+            <input type="text" id="address2" name="address2" placeholder='Enter address2' value={newEntry.address2} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
           </div>
 
 
@@ -172,7 +172,7 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       {/* Your table JSX here */}
 
       <div className={`transition-all duration-300 ease-in-out ${showAddForm ? 'translate-y-full' : 'translate-y-0'}`}>
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-12">
           <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
             <div className="p-2.5 xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">

@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import Modal from '../Modal/page';
 import { Product } from "@/types/product";
 import Image from "next/image";
 
@@ -38,7 +39,10 @@ const TableFour: React.FC = () => {
     }
   ]);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [productIdToDelete, setProductIdToDelete] = useState<string | null>(null);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [entries, setEntries] = useState<Product[]>([]);
@@ -126,10 +130,17 @@ const TableFour: React.FC = () => {
     }
   };
 
-  const handleDelete = (productId: string) => {
-    // Logic to delete the product
-    // This could involve filtering the productData array to remove the product with the given ID
-    setproductData(productData.filter(product => product.id !== productId));
+  // const handleDelete = (productId: string) => {
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>, productId: string) => {
+
+    event.preventDefault();
+    setProductIdToDelete(productId);
+    setIsModalOpen(true);
+    // const userConfirmation = window.confirm("Are you sure you want to delete this product?");
+    // // If the user confirms, proceed with the deletion
+    // if (userConfirmation) {
+    //   setproductData(productData.filter(product => product.id !== productId));
+    // }
   };
 
   const handleUpdate = (productToUpdate: Product) => {
@@ -141,6 +152,19 @@ const TableFour: React.FC = () => {
     setShowUpdateForm(true);
 
     console.log(productToUpdate);
+  };
+
+  const confirmDelete = () => {
+    if (productIdToDelete) {
+      setproductData(productData.filter(product => product.id !== productIdToDelete));
+    }
+    setIsModalOpen(false);
+    setProductIdToDelete(null);
+  };
+
+  const cancelDelete = () => {
+    setIsModalOpen(false);
+    setProductIdToDelete(null);
   };
 
 
@@ -267,11 +291,13 @@ const TableFour: React.FC = () => {
 
 
 
+
+
       {/* Your table JSX here */}
 
       <div className={`transition-all duration-300 ease-in-out ${showAddForm ? 'translate-y-full' : 'translate-y-0'}`}>
         <div className="flex flex-col">
-          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+          <div className="grid grid-cols-4 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
             <div className="p-2.5 xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
                 Product
@@ -320,18 +346,34 @@ const TableFour: React.FC = () => {
               </div>
 
               <div className="flex flex-col items-center justify-center p-2.5 xl:p-5">
-                <button
-                  className="bg-red text-white px-4 py-2 rounded mr-2 mb-4"
-                  onClick={() => handleDelete(Product.id)}
-                >
-                  Delete
-                </button>
-                <button
-                  className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-                  onClick={() => handleUpdate(Product)}
-                >
-                  Update
-                </button>
+                <div className="flex items-center justify-center">
+                  <button
+                    className="bg-red text-white px-4 py-2 rounded mr-2 mb-4"
+                    onClick={(event) => handleDelete(event, Product.id)}
+                  >
+                    Delete
+                  </button>
+                  {/* Rendering the modal conditionally based on isModalOpen */}
+                  {isModalOpen && (
+                    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                      <div className="modal-content">
+                        <h2 className="text-2xl font-bold mb-4">Are you sure you want to delete this product?</h2>
+                        <div className="p-4 flex items-center justify-center z-50">
+                          <button className="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2 mb-4" onClick={cancelDelete}>Cancel</button>
+                          <button className="bg-red text-white px-4 py-2 rounded mr-2 mb-4" onClick={confirmDelete}>Yes, Delete</button>
+                        </div>
+                      </div>
+                    </Modal>
+                  )}
+                </div>
+                <div className="flex items-center justify-center">
+                  <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
+                    onClick={() => handleUpdate(Product)}
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             </div>
           ))}
