@@ -1,5 +1,13 @@
 import Image from "next/image";
-import { Product } from "@/types/product";
+// import { Product } from "@/types/product";
+
+export interface Product {
+  id ?: string;
+  image: string;
+  name: string;
+  sold?: number; // Optional property
+}
+
 
 const productData: Product[] = [
   {

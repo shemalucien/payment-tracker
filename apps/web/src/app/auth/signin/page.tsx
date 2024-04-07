@@ -14,11 +14,11 @@ const SignIn: React.FC = () => {
   return (
     // <DefaultLayout>
     //   <Breadcrumb pageName="Sign In" />
-    <div className="flex flex-col items-center justify-between min-h-screen p-24">
+    <div className="flex flex-col items-center justify-between px-5 py-10">
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
-            <div className="px-26 py-17.5 text-center">
+            <div className="px-10 py-10 text-center">
               <Link className="mb-5.5 inline-block" href="/">
                 <Image
                   className="hidden dark:block"
@@ -166,9 +166,8 @@ const SignIn: React.FC = () => {
             </div>
           </div>
 
-          <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
-            <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
-              {/* <span className="mb-1.5 block font-medium">Start for free</span> */}
+          <div className="w-full sm:w-full md:w-1/2 xl:w-1/2 border-stroke dark:border-strokedark xl:border-l-2 mx-auto">
+            <div className="w-full p-4 sm:p-2 xl:p-10">
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                 Sign In to DISSCO
               </h2>

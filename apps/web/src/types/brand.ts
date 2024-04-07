@@ -1,9 +1,9 @@
 export interface BRAND {
     logo: string;
     name: string;
-    visitors: number;
-    revenues: string;
-    sales: number;
-    conversion: number;
+    Tinnumber: string;
+    contact: string;
+    address1: string;
+    address2: string;
   };
   
