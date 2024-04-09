@@ -1,19 +1,18 @@
 import Breadcrumb from "@/components/Breadcrumbs/breadcrumb";
 import TableFour from "@/components/Tables/table-four";
-
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/default-layout";
 
 export const metadata: Metadata = {
-  title: "Next.js Tables | TailAdmin - Next.js Dashboard Template",
+  title: "Products",
   description:
-    "This is Next.js Tables page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Products page",
 };
 
 const TablesPage = () => {
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Tables" />
+      <Breadcrumb pageName="Products" />
 
       <div className="flex flex-col gap-10">
         <TableFour />

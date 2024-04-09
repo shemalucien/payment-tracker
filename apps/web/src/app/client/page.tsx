@@ -5,9 +5,9 @@ import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/default-layout";
 
 export const metadata: Metadata = {
-  title: "Next.js Tables | TailAdmin - Next.js Dashboard Template",
+  title: "Clients",
   description:
-    "This is Next.js Tables page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Clients page",
 };
 
 const TablesPage = () => {

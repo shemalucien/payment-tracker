@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import { Product } from "@/types/product";
 
 export interface Product {
   id ?: string;
@@ -11,24 +10,24 @@ export interface Product {
 
 const productData: Product[] = [
   {
-    image: "/images/product/product-01.png",
+    image: "/images/user/charles.png",
     name: "Kalisa",
-    sold: 73
+    sold: 730
   },
   {
-    image: "/images/product/product-02.png",
+    image: "/images/user/charles.png",
     name: "Karangwa",
-    sold: 70
+    sold: 700
   },
   {
-    image: "/images/product/product-03.png",
+    image: "/images/user/charles.png",
     name: "Mukamana",
-    sold: 64
+    sold: 640
   },
   {
-    image: "/images/product/product-04.png",
+    image: "/images/user/charles.png",
     name: "Janvier",
-    sold: 50
+    sold: 500
   },
 ];
 

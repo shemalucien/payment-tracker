@@ -1,13 +1,12 @@
 import { ApexOptions } from "apexcharts";
 import React, { useState } from "react";
-// import ReactApexChart from "react-apexcharts";
 import dynamic from 'next/dynamic';
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 
 const options: ApexOptions = {
-  colors: ["#3C50E0", "#80CAEE"],
+  colors: ["#3C50E0", "#86ee80"],
   chart: {
     fontFamily: "Satoshi, sans-serif",
     type: "bar",
@@ -78,11 +77,11 @@ const ChartTwo: React.FC = () => {
     series: [
       {
         name: "Sold",
-        data: [44, 55, 41, 67, 22, 43, 65],
+        data: [4400, 5500, 4100, 6700, 2200, 4300, 6500],
       },
       {
         name: "Paid",
-        data: [13, 23, 20, 8, 13, 27, 15],
+        data: [1300, 2300, 2000, 800, 1300, 2700, 1500],
       },
     ],
   });

@@ -1,9 +1,7 @@
 "use client";
 import React from "react";
 import ChartOne from "../Charts/chart-one";
-// import ChartThree from "../Charts/chart-three";
 import ChartTwo from "../Charts/chart-two";
-// import ChatCard from "../Chat/chart-card";
 import TableTwo from "../Tables/table-two";
 import TableTFive from "../Tables/table-five";
 import CardDataStats from "../card-data-stats";
@@ -226,7 +224,7 @@ const ECommerce: React.FC = () => {
             <path d="m 7 0 c -0.554688 0 -1 0.445312 -1 1 h -2 c -1.644531 0 -3 1.355469 -3 3 v 9 c 0 1.644531 1.355469 3 3 3 h 2 c 0.550781 0 1 -0.449219 1 -1 s -0.449219 -1 -1 -1 h -2 c -0.570312 0 -1 -0.429688 -1 -1 v -9 c 0 -0.570312 0.429688 -1 1 -1 h 1 v 1 c 0 0.554688 0.445312 1 1 1 h 4 c 0.554688 0 1 -0.445312 1 -1 v -1 h 1 c 0.570312 0 1 0.429688 1 1 v 2 c 0 0.550781 0.449219 1 1 1 s 1 -0.449219 1 -1 v -2 c 0 -1.644531 -1.355469 -3 -3 -3 h -2 c 0 -0.554688 -0.445312 -1 -1 -1 z m 0 0" fill="#2e3436" fill-opacity="0.35" />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Clients" total="86" rate="0.95%" levelDown>
+        <CardDataStats title="Total Clients" total="86" rate="0.95%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -272,7 +270,7 @@ const ECommerce: React.FC = () => {
             </g>
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Users" total="4" rate="0.95%" levelDown>
+        <CardDataStats title="Total Users" total="4" rate="0.95%" levelUp>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -300,11 +298,6 @@ const ECommerce: React.FC = () => {
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <ChartOne />
         <ChartTwo />
-
-        {/* <div className="col-span-12">
-          <TableTwo />
-          <TableTwo />
-        </div> */}
       </div>
       <div className="flex flex-col md:flex-row gap-4 md:gap-6">
         <div className="w-full md:w-1/2">

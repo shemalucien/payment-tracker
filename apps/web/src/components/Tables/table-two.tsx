@@ -11,24 +11,24 @@ export interface Product {
 
 const productData: Product[] = [
   {
-    image: "/images/product/product-01.png",
-    name: "Apple Watch Series 7",
-    sold: 1000
+    image: "/images/product/Malt-with-Glass.png",
+    name: "Skol Malt",
+    sold: 10000
   },
   {
-    image: "/images/product/product-02.png",
-    name: "Macbook Pro M1",
-    sold: 960
+    image: "/images/product/Gatanu.png",
+    name: "Skol Gatanu",
+    sold: 12000
   },
   {
-    image: "/images/product/product-03.png",
-    name: "Dell Inspiron 15",
-    sold: 940
+    image: "/images/product/panache.png",
+    name: "Skol Panache",
+    sold: 9400
   },
   {
-    image: "/images/product/product-04.png",
-    name: "HP Probook 450",
-    sold: 920
+    image: "/images/product/Panache.png",
+    name: "Skol Panache",
+    sold: 12000
   },
 ];
 

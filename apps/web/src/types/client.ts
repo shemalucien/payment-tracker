@@ -1,4 +1,5 @@
-export interface BRAND {
+export interface CLIENT {
+  id: string;
     logo: string;
     name: string;
     Tinnumber: string;

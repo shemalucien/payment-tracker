@@ -1,6 +1,5 @@
 import Link from "next/link";
 import DarkModeSwitcher from "./dark-mode-switcher";
-import DropdownMessage from "./dropdown-message";
 import DropdownNotification from "./dropdown-notification";
 import DropdownUser from "./dropdown-user";
 import Image from "next/image";
@@ -60,7 +59,7 @@ const Header = (props: {
             <Image
               width={32}
               height={32}
-              src={"/images/logo/dissco.png"}
+              src={"/images/logo/redco.png"}
               alt="Logo"
             />
           </Link>
@@ -112,8 +111,6 @@ const Header = (props: {
             <DropdownNotification />
             {/* <!-- Notification Menu Area --> */}
 
-            {/* <!-- Chat Notification Area --> */}
-            <DropdownMessage />
             {/* <!-- Chat Notification Area --> */}
           </ul>
 

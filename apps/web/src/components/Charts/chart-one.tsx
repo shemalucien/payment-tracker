@@ -1,8 +1,6 @@
 import { ApexOptions } from "apexcharts";
 import React, { useState } from "react";
-// import ReactApexChart from "react-apexcharts";
 import dynamic from 'next/dynamic';
-
 const ReactApexChart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
 const options: ApexOptions = {
@@ -51,10 +49,6 @@ const options: ApexOptions = {
     width: [2, 2],
     curve: "straight",
   },
-  // labels: {
-  //   show: false,
-  //   position: "top",
-  // },
   grid: {
     xaxis: {
       lines: {
@@ -114,7 +108,7 @@ const options: ApexOptions = {
       },
     },
     min: 0,
-    max: 100,
+    max: 10000,
   },
 };
 
@@ -129,23 +123,23 @@ const ChartOne: React.FC = () => {
   const [state, setState] = useState<ChartOneState>({
     series: [
       {
-        name: "Product One",
-        data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30, 45],
+        name: "Skol Malt",
+        data: [2300, 1100, 2200, 2700, 1300, 2200, 3700, 2100, 4400, 2200, 3000, 4500],
       },
 
       {
-        name: "Product Two",
-        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
+        name: "Skol Panache",
+        data: [3000, 2500, 3600, 3000, 4500, 3500, 6400, 5200, 5900, 3600, 3900, 5100],
       },
 
       {
-        name: "Product Three",
-        data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
+        name: "Skol Gatanu",
+        data: [3000, 2500, 3600, 3000, 4500, 3500, 6400, 5200, 5900, 3600, 3900, 5100],
       },
 
       {
-        name: "Product Four",
-        data: [60, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39, 51],
+        name: "Skol Lager",
+        data: [6000, 2500, 3600, 3000, 4500, 3500, 6400, 5200, 5900, 3600, 3900, 5100],
       }
     ],
   });
@@ -167,18 +161,8 @@ const ChartOne: React.FC = () => {
             </span>
             <div className="w-full">
               <p className="font-semibold text-primary">Total Sales</p>
-              {/* <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p> */}
             </div>
           </div>
-          {/* <div className="flex min-w-47.5">
-            <span className="mr-2 mt-1 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-secondary">
-              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-secondary"></span>
-            </span>
-            <div className="w-full">
-              <p className="font-semibold text-secondary">Total Sales</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
-            </div>
-          </div> */}
         </div>
         <div className="flex w-full max-w-45 justify-end">
           <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
@@ -190,6 +174,15 @@ const ChartOne: React.FC = () => {
             </button>
             <button className="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
               Month
+            </button>
+            <button className="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+              Year
+            </button>
+            <button
+              onClick={handleReset}
+              className="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark"
+            >
+              Reset
             </button>
           </div>
         </div>
