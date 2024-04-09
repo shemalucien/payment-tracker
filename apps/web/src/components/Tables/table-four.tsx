@@ -23,7 +23,7 @@ const TableFour: React.FC = () => {
     },
     {
       id: "3",
-      image: "/images/product/panache.png",
+      image: "/images/product/Panache.png",
       name: "Skol Panache",
       description: "Skol Panache is a malt based drink with a rich taste. It is a malt-based drink with a rich taste. It is a malt-based drink with a rich taste.",
       price: 12000
