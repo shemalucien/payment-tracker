@@ -1,7 +1,7 @@
 export interface Order {
-  id : string;
-  name: string;
-  price: number;
-  invoiceDate: string;
-  status: string;
+  id ?: string;
+  name ?: string;
+  price : number;
+  invoiceDate ?: string;
+  status : string;
 };
