@@ -8,7 +8,7 @@ export class Product {
 
   @Column({ nullable: false })
   name: string;
-
+  
   @Column({ nullable: false })
   description: string;
 
@@ -25,3 +25,4 @@ export class Product {
   @UpdateDateColumn()
   updatedat: Date;
 }
+

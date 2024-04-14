@@ -1,26 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, ManyToMany, JoinTable, OneToOne, JoinColumn } from "typeorm";
-import { Client } from "./Client.entity";
-import { Product } from "./Product.entity";
-import { Payment } from "./Payment.entity";
-
-@Entity({ name: "orders" })
-export class Order {
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+  ManyToMany,
+  JoinTable,
+  OneToOne,
+  JoinColumn,
+ } from "typeorm";
+ import { Client } from "./Client.entity";
+ import { Product } from "./Product.entity";
+ import { Payment } from "./Payment.entity";
+ 
+ @Entity({ name: "orders" })
+ export class Order {
   @PrimaryGeneratedColumn("uuid")
   id: string;
-
-  // @ManyToOne(() => Client, client => client.orders)
-  // clientid: Client;
-
-  // @ManyToMany(() => Product)
-  // @JoinTable()
-  // products: Product[];
-
-  @Column({ nullable: false })
-  clientid: string;
-
-  @Column({ nullable: true })
-  paymentid: string;
-
+ 
+  @ManyToOne(() => Client, (client) => client.orders)
+  @JoinColumn({ name: "clientId" })
+  client: Client;
 
   @ManyToMany(() => Product)
   @JoinTable()
@@ -28,14 +29,15 @@ export class Order {
 
   @Column({ type: "decimal", precision: 10, scale: 2, nullable: false })
   totalamount: number;
-
-  // @OneToOne(() => Payment)
-  // @JoinColumn()
-  // payment: Payment;
-
+ 
+  @OneToOne(() => Payment, (payment) => payment.order)
+  @JoinColumn({ name: "paymentId" })
+  payment: Payment;
+  
   @CreateDateColumn()
-  createdat: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updatedat: Date;
-}
+  updatedAt: Date;
+ }
+ 

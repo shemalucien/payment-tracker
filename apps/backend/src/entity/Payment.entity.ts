@@ -1,36 +1,43 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn,OneToOne, JoinColumn } from "typeorm";
-import { Order } from "./Order.entity";
-
-@Entity({ name: "payments" })
-export class Payment {
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
+ } from "typeorm";
+ import { Order } from "./Order.entity";
+ import { Client } from "./Client.entity"; // Assuming Client is another entity
+ 
+ @Entity({ name: "payments" })
+ export class Payment {
   @PrimaryGeneratedColumn("uuid")
   id: string;
-
+ 
   @Column({ type: "decimal", precision: 10, scale: 2, nullable: false })
   amount: number;
-
-  @Column({ nullable: false })
-  paymentmode: string;
-
+ 
+  @Column({ type: "enum", enum: ["Cash", "Phone", "Bank"], default: "Cash" })
+  paymentMode: string;
+ 
   @Column({ type: "date", nullable: false })
-  paymentdate: Date;
-
-  @Column({ nullable: false })
-  clientid: string;
-
-  @Column({ nullable: false })
-  orderid: string;
-
-  @Column({ nullable: false })
+  paymentDate: Date;
+ 
+  @ManyToOne(() => Client, (client) => client.payments)
+  @JoinColumn({ name: "clientId" })
+  clientId: Client;
+  
+  @ManyToOne(() => Order, (order) => order.payment)
+  @JoinColumn({ name: "orderId" })
+  order: Order;
+ 
+  @Column({ type: "enum", enum: ["Paid", "Unpaid", "Overdue","PartiallyPaid"], default: "Unpaid" })
   status: string;
-
-  // @OneToOne(() => Order)
-  // @JoinColumn()
-  // order: Order;
-
+ 
   @CreateDateColumn()
-  createdat: Date;
-
+  createdAt: Date;
+ 
   @UpdateDateColumn()
-  updatedat: Date;
-}
+  updatedAt: Date;
+ }

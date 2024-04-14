@@ -7,7 +7,9 @@ import { userRouter } from "./routes/user.routes";
 import { clientRouter } from "./routes/client.routes";
 import { orderRouter } from "./routes/order.routes";
 import { productRouter } from "./routes/product.routes";
-import {paymentrouter } from "./routes/payment.routes";
+import {paymentRouter } from "./routes/payment.routes";
+import { driverRouter } from "./routes/driver.routes";
+import { reportRouter } from "./routes/report.routes";
 const app: Express = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -20,8 +22,11 @@ app.get('/hello', (req, res, next) => {
 app.use("/auth", userRouter);
 app.use("/clients", clientRouter);
 app.use("/products", productRouter);
-app.use("/payments", paymentrouter);
+app.use("/payments", paymentRouter);
 app.use("/orders", orderRouter);
+app.use("/drivers", driverRouter);
+app.use("/reports", reportRouter);
+
 
 
 

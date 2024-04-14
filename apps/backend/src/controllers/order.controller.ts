@@ -17,27 +17,27 @@ export class OrderController {
     }
     res.json(order);
   }
-
+  
   static async createOrder(req: Request, res: Response) {
-    const { clientid, products, totalAmount, payment } = req.body;
+    const { clientId, products, totalAmount, paymentId } = req.body;
+    console.log(clientId, products, totalAmount, paymentId);
     const order = new Order();
-    order.clientid = clientid;
+    order.client = clientId;
     order.products = products;
     order.totalamount = totalAmount;
-    order.paymentid = payment;
+    order.payment = paymentId;
     const savedOrder = await AppDataSource.manager.save(order);
     return res.status(200).json({ message: "Order created successfully", savedOrder });
   }
-
   static async updateOrder(req: Request, res: Response) {
     const { id } = req.params;
     const { clientid, products, totalAmount, payment } = req.body;
         const order = await AppDataSource.manager.findOne(Order, { where: { id } });
         if (order) {
-            order.clientid = clientid;
+            order.client = clientid;
             order.products = products;
             order.totalamount = totalAmount;
-            order.paymentid = payment;
+            order.payment = payment;
             await AppDataSource.manager.save(order);
             return res.status(200).json({ message: "Order updated successfully", order });
         } else {
