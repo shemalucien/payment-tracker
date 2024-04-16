@@ -170,8 +170,8 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, defaultValues }) => {
         const updatedItems = [...invoiceItems];
         updatedItems.splice(index, 1);
         setInvoiceItems(updatedItems);
-       };
-       
+    };
+
 
     useEffect(() => {
         let active = true;
@@ -226,7 +226,7 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, defaultValues }) => {
 
     return (
         <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-50">
-            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col mb-8 w-full max-w-lg mx-auto text-black dark:text-white dark:bg-black bg-white p-6 rounded-lg shadow-lg'>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col  justify-center mb-8 w-full max-w-lg mx-auto text-black dark:text-white dark:bg-black bg-white p-6 rounded-lg shadow-lg'>
                 <div className="mb-6">
                     <Autocomplete
                         id="client-autocomplete"
@@ -317,6 +317,11 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, defaultValues }) => {
                                 }
                                 // Set the updated products array back into the form state
                                 setValue('products', updatedProducts);
+
+                                // Call handleProductSelection with the index of the last item in invoiceItems
+                                // and the new product selected
+                                const lastItemIndex = invoiceItems.length - 1;
+                                handleProductSelection(lastItemIndex, newValue);
                             } else {
                                 // If no product is selected, clear the products array
                                 setValue('products', []);
@@ -403,16 +408,16 @@ const OrderForm: React.FC<OrderFormProps> = ({ onSubmit, defaultValues }) => {
                 {/* Render invoice items */}
                 {invoiceItems.map((item, index) => (
                     <div key={index} className="mb-6 flex items-center justify-between">
-                    {/* Product Name */}
-                    <div className="mb-2 flex-grow">{item.product ? item.product.name : 'No product selected'}</div>
-                    {/* Quantity */}
-                    <div className="mb-2">Quantity: {item.quantity}</div>
-                    {/* Total Price */}
-                    <div className="mb-2">Total Price: {item.totalPrice}</div>
-                    {/* Delete Button */}
-                    <button className="mb-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Remove Item</button>
-                </div>
-                
+                        {/* Product Name */}
+                        <div className="mb-2 flex-grow">{item.product ? item.product.name : 'No product selected'}</div>
+                        {/* Quantity */}
+                        <div className="mb-2">Quantity: {item.quantity}</div>
+                        {/* Total Price */}
+                        <div className="mb-2">Total Price: {item.totalPrice}</div>
+                        {/* Delete Button */}
+                        <button className="mb-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Remove Item</button>
+                    </div>
+
                 ))}
 
                 <Button onClick={addNewItem}>Add New Item</Button>

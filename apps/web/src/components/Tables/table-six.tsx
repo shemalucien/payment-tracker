@@ -1,74 +1,62 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import Modal from '../Modal/page';
-import { Client } from "@/types/client";
+import { Driver } from "@/types/driver";
 import Image from "next/image";
 
 
 
-const TableOne: React.FC = () => {
+const TableSix: React.FC = () => {
 
-  const [CLIENTData, setCLIENTData] = useState<Client[]>([
+  const [DriverData, setDriverData] = useState<Driver[]>([
     {
-      id: 'client-1',
-      logo: "/images/user/charles.png",
+      id: 'Driver-1',
+      image: "/images/user/charles.png",
       name: "Kalisa",
-      Tinnumber: "1234578",
+      IdNumber: "1234578",
       contact: "0788888888",
-      address1: "Nyarugenge",
-      address2: "Kimisagara",
     },
     {
-      id: 'client-2',
-      logo: "/images/user/charles.png",
+      id: 'Driver-2',
+      image: "/images/user/charles.png",
       name: "Kagabo",
-      Tinnumber: "1234578",
-      contact: "0788888888",
-      address1: "Nyarugenge",
-      address2: "Kimisagara",
+      IdNumber: "1234578",
+      contact: "0788888888"
     },
     {
-      id: 'client-3',
-      logo: "/images/user/charles.png",
+      id: 'Driver-3',
+      image: "/images/user/charles.png",
       name: "Mukamana",
-      Tinnumber: "1234578",
+      IdNumber: "1234578",
       contact: "0788888888",
-      address1: "Nyarugenge",
-      address2: "Kimisagara",
     },
     {
-      id: 'client-4',
-      logo: "/images/user/charles.png",
+      id: 'Driver-4',
+      image: "/images/user/charles.png",
       name: "Janvier",
-      Tinnumber: "1234578",
+      IdNumber: "1234578",
       contact: "0788888888",
-      address1: "Nyarugenge",
-      address2: "Kimisagara",
     },
     {
-      id: 'client-5',
-      logo: "/images/user/charles.png",
+      id: 'Driver-5',
+      image: "/images/user/charles.png",
       name: "Vincent",
-      Tinnumber: "1234578",
+      IdNumber: "1234578",
       contact: "0788888888",
-      address1: "Nyarugenge",
-      address2: "Kimisagara",
     },
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingCLIENT, setEditingCLIENT] = useState<Client | null>(null);
-  const [CLIENTIdToDelete, setCLIENTIdToDelete] = useState<string | null>(null);
+  const [editingDriver, setEditingDriver] = useState<Driver | null>(null);
+  const [DriverIdToDelete, setDriverIdToDelete] = useState<string | null>(null);
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
-  const [entries, setEntries] = useState<Client[]>([]);
-  const [newEntry, setNewEntry] = useState<Client>({
+  const [entries, setEntries] = useState<Driver[]>([]);
+  const [newEntry, setNewEntry] = useState<Driver>({
     id: '',
     name: '',
-    logo: '/images/user/charles.png',
-    Tinnumber: '',
-    contact: '',
-    address1: '',
-    address2: ''
+    image: '/images/user/charles.png',
+    IdNumber: '',
+    contact: ''
   });
 
   // Correctly implemented handleInputChange function
@@ -79,14 +67,14 @@ const TableOne: React.FC = () => {
       [name]: value
     }));
 
-    // Update editingCLIENT state
-    setEditingCLIENT(prevCLIENT => {
-      if (!prevCLIENT) return prevCLIENT; // If there's no CLIENT being edited, return null
+    // Update editingDriver state
+    setEditingDriver(prevDriver => {
+      if (!prevDriver) return prevDriver; // If there's no Driver being edited, return null
 
       const updatedProperty = name === 'id' ? (value || '') : value;
 
       return {
-        ...prevCLIENT,
+        ...prevDriver,
         [name]: updatedProperty
       };
     });
@@ -95,35 +83,33 @@ const TableOne: React.FC = () => {
 
 
   useEffect(() => {
-    console.log(CLIENTData); // This will log the updated CLIENTData state
-  }, [CLIENTData]); // Depend on CLIENTData to run the effect when CLIENTData changes
-  const addNewCLIENT = (newCLIENT: CLIENT) => {
-    setCLIENTData(prevCLIENTData => [...prevCLIENTData, newCLIENT]);
+    console.log(DriverData); // This will log the updated DriverData state
+  }, [DriverData]); // Depend on DriverData to run the effect when DriverData changes
+  const addNewDriver = (newDriver: Driver) => {
+    setDriverData(prevDriverData => [...prevDriverData, newDriver]);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (editingCLIENT) {
-      // Update existing CLIENT
-      const updatedCLIENTData = CLIENTData.map(CLIENT =>
-        CLIENT.id === editingCLIENT.id ? newEntry : CLIENT
+    if (editingDriver) {
+      // Update existing Driver
+      const updatedDriverData = DriverData.map(Driver =>
+        Driver.id === editingDriver.id ? newEntry : Driver
       );
-      setCLIENTData(updatedCLIENTData);
-      setEditingCLIENT(null);
+      setDriverData(updatedDriverData);
+      setEditingDriver(null);
     } else {
-      // Add new CLIENT
-      addNewCLIENT(newEntry);
+      // Add new Driver
+      addNewDriver(newEntry);
     }
     setShowUpdateForm(false);
     setNewEntry({
       id: '',
       name: '',
-      logo: '/images/user/charles.png',
-      Tinnumber: '',
-      contact: '',
-      address1: '',
-      address2: ''
+      image: '/images/user/charles.png',
+      IdNumber: '',
+      contact: ''
     });
   };
 
@@ -144,38 +130,38 @@ const TableOne: React.FC = () => {
     }
   };
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>, clientId: string) => {
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>, DriverId: string) => {
 
     event.preventDefault();
 
-    setCLIENTIdToDelete(clientId);
+    setDriverIdToDelete(DriverId);
 
     // Perform the delete operation here
     setIsModalOpen(true);
   };
 
-  const handleUpdate = (clientToUpdate: Client) => {
+  const handleUpdate = (DriverToUpdate: Driver) => {
     // Logic to update the product
     // This could involve setting a state to indicate that an update is in progress and displaying a form to edit the product
     // For simplicity, let's just log the product to update
     // Set the state to show the update form with the existing product information
-    setEditingCLIENT(clientToUpdate);
+    setEditingDriver(DriverToUpdate);
     setShowUpdateForm(true);
 
-    console.log(clientToUpdate);
+    console.log(DriverToUpdate);
   };
 
   const confirmDelete = () => {
-    if (CLIENTIdToDelete) {
-      setCLIENTData(CLIENTData.filter(CLIENT => CLIENT.id !== CLIENTIdToDelete));
+    if (DriverIdToDelete) {
+      setDriverData(DriverData.filter(Driver => Driver.id !== DriverIdToDelete));
     }
     setIsModalOpen(false);
-    setCLIENTIdToDelete(null);
+    setDriverIdToDelete(null);
   };
 
   const cancelDelete = () => {
     setIsModalOpen(false);
-    setCLIENTIdToDelete(null);
+    setDriverIdToDelete(null);
   };
 
 
@@ -184,7 +170,7 @@ const TableOne: React.FC = () => {
     <div className="rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 h-full">
       <div className="mb-5 flex items-center justify-between">
         <h4 className="mb-6 text-xl font-semibold text-black dark:text-white ">
-          Clients Identification
+          Drivers Identification
         </h4>
 
         {/* Button to toggle the form */}
@@ -203,7 +189,7 @@ const TableOne: React.FC = () => {
           </div>
 
           <div className="mb-2">
-            <label htmlFor="logo" className="block font-semibold mb-1">Picture</label>
+            <label htmlFor="image" className="block font-semibold mb-1">Picture</label>
             {/* <div className="flex flex-col items-center justify-center border border-gray-400 px-2 py-1 rounded w-3/4 cursor-pointer">
               <div className="text-gray-700 text-lg font-bold text-center transition-colors duration-200 ease-in-out hover:text-gray-800 w-3/4">
                 Drop files here
@@ -214,7 +200,7 @@ const TableOne: React.FC = () => {
             <input
               type="file"
               accept="image/*"
-              id="logo"
+              id="image"
               className=" w-3/4"
               onChange={(e) => handleFileUpload(e)}
               onDragOver={(e) => e.preventDefault()}
@@ -224,30 +210,20 @@ const TableOne: React.FC = () => {
           </div>
 
           <div className="mb-2">
-            <label htmlFor="Tinnumber" className="block font-semibold mb-1">Tinnumber</label>
-            <input type="text" id="Tinnumber" name="Tinnumber" placeholder='Enter Tinnumber' value={newEntry.Tinnumber} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
+            <label htmlFor="IdNumber" className="block font-semibold mb-1">IdNumber</label>
+            <input type="text" id="IdNumber" name="IdNumber" placeholder='Enter IdNumber' value={newEntry.IdNumber} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
           </div>
           <div className="mb-2">
             <label htmlFor="contact" className="block font-semibold mb-1">Contact</label>
             <input type="text" id="contact" name="contact" placeholder='Enter contact' value={newEntry.contact} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
           </div>
-          <div className="mb-2">
-            <label htmlFor="address1" className="block font-semibold mb-1">Address1</label>
-            <input type="text" id="address1" name="address1" placeholder='Enter address1' value={newEntry.address1} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
-          </div>
-          <div className="mb-2">
-            <label htmlFor="address2" className="block font-semibold mb-1">Address2</label>
-            <input type="text" id="address2" name="address2" placeholder='Enter address2' value={newEntry.address2} onChange={handleInputChange} className="border border-gray-400 px-2 py-1 rounded w-3/4" />
-          </div>
-
-
           <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Submit</button>
         </form>
       </div>
-      {editingCLIENT && (
+      {editingDriver && (
          <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
          <div className="bg-white p-6 rounded-lg w-96">
-           <h2 className="text-xl font-bold mb-4">Update Client</h2>
+           <h2 className="text-xl font-bold mb-4">Update Driver</h2>
            <form onSubmit={handleSubmit}>
              <div className="mb-4">
                <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
@@ -258,20 +234,20 @@ const TableOne: React.FC = () => {
                  type="text"
                  id="name"
                  name="name"
-                 value={editingCLIENT.name}
+                 value={editingDriver.name}
                  onChange={handleInputChange}
                />
              </div>
              <div className="mb-4">
-               <label className="block text-gray-700 font-bold mb-2" htmlFor="Tinnumber">
-                 TIN Number
+               <label className="block text-gray-700 font-bold mb-2" htmlFor="IdNumber">
+                 ID Number
                </label>
                <input
                  className="border border-gray-400 p-2 w-full"
                  type="text"
-                 id="Tinnumber"
-                 name="Tinnumber"
-                 value={editingCLIENT.Tinnumber}
+                 id="IdNumber"
+                 name="IdNumber"
+                 value={editingDriver.IdNumber}
                  onChange={handleInputChange}
                />
              </div>
@@ -284,33 +260,7 @@ const TableOne: React.FC = () => {
                  type="text"
                  id="contact"
                  name="contact"
-                 value={editingCLIENT.contact}
-                 onChange={handleInputChange}
-               />
-             </div>
-             <div className="mb-4">
-               <label className="block text-gray-700 font-bold mb-2" htmlFor="address1">
-                 Address 1
-               </label>
-               <input
-                 className="border border-gray-400 p-2 w-full"
-                 type="text"
-                 id="address1"
-                 name="address1"
-                 value={editingCLIENT.address1}
-                 onChange={handleInputChange}
-               />
-             </div>
-             <div className="mb-4">
-               <label className="block text-gray-700 font-bold mb-2" htmlFor="address2">
-                 Address 2
-               </label>
-               <input
-                 className="border border-gray-400 p-2 w-full"
-                 type="text"
-                 id="address2"
-                 name="address2"
-                 value={editingCLIENT.address2}
+                 value={editingDriver.contact}
                  onChange={handleInputChange}
                />
              </div>
@@ -333,30 +283,20 @@ const TableOne: React.FC = () => {
 
       <div className={`transition-all duration-300 ease-in-out ${showAddForm ? 'translate-y-full' : 'translate-y-0'}`}>
         <div className="flex flex-col mt-12">
-          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-6">
+          <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-4">
             <div className="p-2.5 xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Client
+                Driver
               </h5>
             </div>
             <div className="p-2.5 text-center xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
-                Tinnumber
+                IdNumber
               </h5>
             </div>
             <div className="hidden p-2.5 text-center sm:block xl:p-5">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
                 contact
-              </h5>
-            </div>
-            <div className="hidden p-2.5 text-center sm:block xl:p-5">
-              <h5 className="text-sm font-medium uppercase xsm:text-base">
-                address1
-              </h5>
-            </div>
-            <div className="hidden p-2.5 text-center sm:block xl:p-5">
-              <h5 className="text-sm font-medium uppercase xsm:text-base">
-                address2
               </h5>
             </div>
             <div className="p-2.5 text-center xl:p-5">
@@ -366,9 +306,9 @@ const TableOne: React.FC = () => {
             </div>
           </div>
 
-          {CLIENTData.map((CLIENT, key) => (
+          {DriverData.map((Driver, key) => (
             <div
-              className={`grid grid-cols-3 sm:grid-cols-6 ${key === CLIENTData.length - 1
+              className={`grid grid-cols-3 sm:grid-cols-4 ${key === DriverData.length - 1
                 ? ""
                 : "border-b border-stroke dark:border-strokedark"
                 }`}
@@ -376,49 +316,42 @@ const TableOne: React.FC = () => {
             >
               <div className="flex items-center gap-3 p-2.5 xl:p-5">
                 <div className="flex-shrink-0">
-                  <Image src={CLIENT.logo} alt="CLIENT" width={48} height={48} style={{
+                  <Image src={Driver.image} alt="Driver" width={48} height={48} style={{
                     borderRadius: '50%',
                     width: "auto",
                     height: "auto",
                   }} />
                 </div>
                 <p className="hidden text-black dark:text-white sm:block">
-                  {CLIENT.name}
+                  {Driver.name}
                 </p>
               </div>
 
+              <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+                <p className="text-black dark:text-white">{Driver.IdNumber}</p>
+              </div>
+
+              
               <div className="flex items-center justify-center p-2.5 xl:p-5">
-                <p className="text-black dark:text-white">{CLIENT.Tinnumber}</p>
-              </div>
-
-              <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                <p className="text-meta-3">{CLIENT.contact}</p>
-              </div>
-
-              <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                <p className="text-black dark:text-white">{CLIENT.address1}</p>
-              </div>
-
-              <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                <p className="text-meta-5">{CLIENT.address2}</p>
+                <p className="text-meta-3">{Driver.contact}</p>
               </div>
 
               <div className="flex items-center justify-center p-2.5 xl:p-5">
               <div className="flex items-center justify-center mr-2">
                   <button
                     className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-                    onClick={() => handleUpdate(CLIENT)}
+                    onClick={() => handleUpdate(Driver)}
                   >
                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                      <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M21.2799 6.40005L11.7399 15.94C10.7899 16.89 7.96987 17.33 7.33987 16.7C6.70987 16.07 7.13987 13.25 8.08987 12.3L17.6399 2.75002C17.8754 2.49308 18.1605 2.28654 18.4781 2.14284C18.7956 1.99914 19.139 1.92124 19.4875 1.9139C19.8359 1.90657 20.1823 1.96991 20.5056 2.10012C20.8289 2.23033 21.1225 2.42473 21.3686 2.67153C21.6147 2.91833 21.8083 3.21243 21.9376 3.53609C22.0669 3.85976 22.1294 4.20626 22.1211 4.55471C22.1128 4.90316 22.0339 5.24635 21.8894 5.5635C21.7448 5.88065 21.5375 6.16524 21.2799 6.40005V6.40005Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M11 4H6C4.93913 4 3.92178 4.42142 3.17163 5.17157C2.42149 5.92172 2 6.93913 2 8V18C2 19.0609 2.42149 20.0783 3.17163 20.8284C3.92178 21.5786 4.93913 22 6 22H17C19.21 22 20 20.2 20 18V13" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                   </button>
                 </div>
                 <div className="flex items-center justify-center">
                   <button
                     className="bg-red text-white px-4 py-2 rounded mr-2 mb-4"
-                    onClick={(event) => handleDelete(event, CLIENT.id)}
+                    onClick={(event) => handleDelete(event, Driver.id)}
                   >
                      <svg
                       className="fill-current"
@@ -450,7 +383,7 @@ const TableOne: React.FC = () => {
                   {isModalOpen && (
                     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                       <div className="modal-content">
-                        <h2 className="text-2xl font-bold mb-4">Are you sure you want to delete this product?</h2>
+                        <h2 className="text-2xl font-bold mb-4">Are you sure you want to delete this Diver ?</h2>
                         <div className="p-4 flex items-center justify-center z-50">
                           <button className="bg-gray-300 text-gray-700 px-4 py-2 rounded mr-2 mb-4" onClick={cancelDelete}>Cancel</button>
                           <button className="bg-red text-white px-4 py-2 rounded mr-2 mb-4" onClick={confirmDelete}>Yes, Delete</button>
@@ -470,4 +403,4 @@ const TableOne: React.FC = () => {
   );
 };
 
-export default TableOne;
+export default TableSix;
