@@ -8,9 +8,9 @@ import {
  import { Client } from "./Client.entity";
  
  @Entity({ name: "reports" })
- export class Report {
+ export class Report{
   @PrimaryGeneratedColumn("uuid")
-  reportid: string;
+  id: string;
  
   @Column({ type: "date", nullable: false })
   date: Date;
@@ -21,32 +21,31 @@ import {
   @Column({
     type: 'jsonb',
     array: true,
-    default: () => 'ARRAY[]::jsonb[]',
-    nullable: false,
+    nullable: true,
   })
   payments: Array<{ id: string }> = []; // Array of payment data
+
+  @Column({ type: "numeric", nullable: false })
+  totalPayments: number;
  
   @Column({
     type: 'jsonb',
     array: true,
-    default: () => 'ARRAY[]::jsonb[]',
-    nullable: false,
+    nullable: true,
   })
   income: Array<{ id: string }> = []; // Array of income data
  
   @Column({
     type: 'jsonb',
     array: true,
-    default: () => 'ARRAY[]::jsonb[]',
-    nullable: false,
+    nullable: true,
   })
   clients: Array<{ id: string }> = []; // Array of client data
  
   @Column({
     type: 'jsonb',
     array: true,
-    default: () => 'ARRAY[]::jsonb[]',
-    nullable: false,
+    nullable: true,
   })
   products: Array<{ id: string }> = []; // Array of product data
  
@@ -55,5 +54,6 @@ import {
  
   @CreateDateColumn()
   createdAt: Date;
+  
  }
  

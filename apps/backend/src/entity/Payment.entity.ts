@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
-  JoinColumn,
+  JoinColumn
  } from "typeorm";
  import { Order } from "./Order.entity";
  import { Client } from "./Client.entity"; // Assuming Client is another entity
@@ -21,7 +21,7 @@ import {
   @Column({ type: "enum", enum: ["Cash", "Phone", "Bank"], default: "Cash" })
   paymentMode: string;
  
-  @Column({ type: "date", nullable: false })
+  @CreateDateColumn()
   paymentDate: Date;
  
   @ManyToOne(() => Client, (client) => client.payments)

@@ -16,7 +16,7 @@ import {
     @ManyToOne(() => Client, (client) => client.notifications)
     client: Client;
    
-    @Column({ type: "enum", enum: ["Email", "SMS"], default: "Email" })
+    @Column({ type: "enum", enum: ["Email", "SMS","Push"], default: "Email" })
     type: string;
    
     @Column({ nullable: false })

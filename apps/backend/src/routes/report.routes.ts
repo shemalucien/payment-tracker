@@ -7,9 +7,15 @@ import { ReportController } from "../controllers/report.controller";
 const Router = express.Router();
 
 
-Router.get("/reports",authentification,authorization(["admin"]), (req, res) => {
+Router.post("/reports",authentification,authorization(["admin"]), (req, res) => {
     ReportController.generateReport(req, res);
 });
+
+Router.get("/reports",authentification,authorization(["admin"]), (req, res) => {
+    ReportController.getReports(req, res);
+});
+
+
 
 
 export { Router as reportRouter }

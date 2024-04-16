@@ -12,6 +12,11 @@ import { Notification } from "./Notification.entity";
 import { Report } from "./Report.entity";
 
 
+export enum ClientType {
+  Permanent = "Permanent",
+  Temporary = "Temporary",
+}
+
 @Entity({ name: "clients" })
 export class Client {
   @PrimaryGeneratedColumn("uuid")
@@ -22,8 +27,8 @@ export class Client {
 
   @Column({
     type: "enum",
-    enum: ["Permanent", "Temporary"],
-    default: "Permanent",
+    enum: ClientType,
+    default: ClientType.Permanent
   })
   clientType: string;
 
@@ -42,16 +47,16 @@ export class Client {
   @Column({ nullable: false })
   address2: string;
 
-  @OneToMany(() => Order, (order) => order.client)
+  @OneToMany(() => Order, (order) => order.client, { nullable: true })
   orders: Order[];
   
-  @OneToMany(() => Payment, (payment) => payment.clientId)
+  @OneToMany(() => Payment, (payment) => payment.clientId, { nullable: true })
   payments: Payment[];
 
-  @OneToMany(() => Notification, (notification) => notification.client)
+  @OneToMany(() => Notification, (notification) => notification.client, { nullable: true })
   notifications: Notification[];
 
-  @OneToMany(() => Report, (report) => report.client)
+  @OneToMany(() => Report, (report) => report.client, { nullable: true })
   reports: Report[];
 
   @CreateDateColumn()
