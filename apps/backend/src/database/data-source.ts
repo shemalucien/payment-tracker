@@ -25,6 +25,10 @@ import { Client } from "../entity/Client.entity";
 import { Order } from "../entity/Order.entity";
 import { Payment } from "../entity/Payment.entity";
 import { Product } from "../entity/Product.entity";
+import { Report } from "../entity/Report.entity";
+import { Notification } from "../entity/Notification.entity";
+import {Driver} from "../entity/Driver.entity";
+import {OrderDetail} from "../entity/OrderDetail.entity";
 
 
 dotenv.config();
@@ -39,11 +43,11 @@ export const AppDataSource = new DataSource({
   username: DB_USERNAME || "postgres",
   password: DB_PASSWORD || "Kigali869762024@$",
   database: DB_DATABASE || "redco_db",
-
-  synchronize: NODE_ENV === "dev" ? false : false,
+  synchronize:  true,
+  // synchronize: NODE_ENV === "dev" ? true : false,
 //logging logs sql command on the treminal
   logging: NODE_ENV === "dev" ? false : false,
-  entities: [User, Client, Order, Payment, Product],
+  entities: [User, Client, Order, Payment, Product, Report, Notification,Driver,OrderDetail],
   migrations: ["migrations/*.ts"],
   subscribers: [],
 });

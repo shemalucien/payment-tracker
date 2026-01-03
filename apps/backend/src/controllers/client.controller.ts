@@ -4,31 +4,42 @@ import { Client } from "../entity/Client.entity";
 
 export class ClientController {
     static async getClients(req: Request, res: Response) {
-        const data = await AppDataSource.manager.find(Client);
+        const data = await AppDataSource.manager.find(Client, {
+            relations: ["orders","payments","notifications","reports"]
+           });
         return res.status(200).json({ data });  
     }
-
     static async createClient(req: Request, res: Response) {
-        const { name, tinNumber, contact, address } = req.body;
+        const { name,clientType, tinNumber, email,contact, address1, address2,orders,payments,notifications,reports } = req.body;
+        // console.log(name,clientType,tinNumber,email,contact, address1, address2,orders,payments,notifications,reports);
         const client = new Client();
         client.name = name;
-        client.tinnumber = tinNumber;    
+        client.clientType = clientType;
+        client.tinNumber = tinNumber; 
+        client.email = email;   
         client.contact = contact;
-        client.address = address;
+        client.address1 = address1;
+        client.address2 = address2;
+        client.orders = orders;
+        client.payments = payments;
+        client.notifications = notifications;
+        client.reports = reports;
         await AppDataSource.manager.save(client);
-
         return res.status(200).json({ message: "Client created successfully", client });
     }
 
     static async updateClient(req: Request, res: Response) {
         const { id } = req.params;
-        const { name, tinNumber, contact, address } = req.body;
+        const { name, clienttype, tinNumber, email,contact, address1, address2} = req.body;
         const client = await AppDataSource.manager.findOne(Client, { where: { id } });
         if (client) {
             client.name = name;
-            client.tinnumber = tinNumber;
+            client.clientType = clienttype;
+            client.tinNumber = tinNumber;
+            client.email = email;
             client.contact = contact;
-            client.address = address;
+            client.address1 = address1;
+            client.address2 = address2;
             await AppDataSource.manager.save(client);
             return res.status(200).json({ message: "Client updated successfully", client });
         } else {

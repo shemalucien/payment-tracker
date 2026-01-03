@@ -1,9 +1,8 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-export class Users1712171222555 implements MigrationInterface {
+export class Users1712774855949 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-
         await queryRunner.query(
             ` 
                 --Table Definition
@@ -13,24 +12,22 @@ export class Users1712171222555 implements MigrationInterface {
                   "email" character varying NOT NULL,
                   "password" character varying NOT NULL,
                   "role"  character varying NOT NULL DEFAULT 'user',
+                  "authType"  character varying NOT NULL DEFAULT 'Email/Password',
+                  "isVerified"  boolean DEFAULT false,
+                  "isActive"  boolean  DEFAULT true,
+                  "address" character varying,
+                  "contact" character varying,
                   "createdAt" TIMESTAMP NOT NULL DEFAULT now(),
                   "updatedAt" TIMESTAMP NOT NULL DEFAULT now(),
                   CONSTRAINT "PK_cace4a159ff9f2512dd42373760" PRIMARY KEY ("id")
                 )
-      
-                
-                
-                
-                
                 `
           ),
             undefined;
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-
         await queryRunner.query(`DROP TABLE "users"`, undefined);
     }
-
 
 }

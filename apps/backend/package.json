@@ -5,12 +5,11 @@
   "main": "index.js",
   "scripts": {
     "watch": "tsc -w",
-    "dev": "nodemon build/index.js",
     "start:dev": "concurrently \"tsc -w\" \"nodemon build/index.js\" ",
     "build": "tsc",
-    "start": "nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "migration:create": "typeorm migration:create ./migrations/users",
+    "migration:create": "node create-migration.js",
     "migration:run": "npm run typeorm -- migration:run -d ./src/database/data-source.ts"
   },
   "keywords": [],

@@ -12,6 +12,36 @@ Router.get(
         OrderController.getAllOrders(req, res);
     }
   );
+
+  Router.get(
+    "/orders/:id",
+    authentification,
+    authorization(["admin"]), (req, res) => {
+        OrderController.getOrderById(req, res);
+    }
+  );
+  Router.post(
+    "/orders",
+    authentification,
+    authorization(["admin"]), (req, res) => {
+        OrderController.createOrder(req, res);
+    }
+  );
+
+  Router.put(
+    "/orders/:id",
+    authentification,
+    authorization(["admin"]), (req, res) => {
+        OrderController.updateOrder(req, res);
+    }
+  );
+  Router.delete(
+    "/orders/:id",
+    authentification,
+    authorization(["admin"]), (req, res) => {
+        OrderController.deleteOrder(req, res);
+    }
+  );
   
 
     

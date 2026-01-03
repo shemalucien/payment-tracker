@@ -9,6 +9,8 @@ export class Orders1712216678142 implements MigrationInterface {
             CREATE TABLE orders (
                 id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
                 clientId UUID NOT NULL,
+                products jsonb,
+                paymentId UUID,
                 totalAmount NUMERIC(10, 2) NOT NULL,
                 paymentId UUID,
                 createdAt TIMESTAMP NOT NULL DEFAULT now(),

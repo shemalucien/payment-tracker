@@ -9,6 +9,7 @@ export class Products1712216643237 implements MigrationInterface {
                 name VARCHAR NOT NULL,
                 description VARCHAR NOT NULL,
                 price NUMERIC(10, 2) NOT NULL,
+                orders jsonb,
                 createdat TIMESTAMP NOT NULL DEFAULT now(),
                 updatedat TIMESTAMP NOT NULL DEFAULT now()
               );

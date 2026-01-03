@@ -18,11 +18,12 @@ export class ProductController {
   }
 
   static async createProduct(req: Request, res: Response) {
-    const { name, description, price } = req.body;
+    const { name, description, price,order } = req.body;
     const product = new Product();
     product.name = name;
     product.description = description;
     product.price = price;
+    product.orders = order;
     await AppDataSource.manager.save(product);
 
     return res.status(200).json({ message: "Product created successfully", product });
